@@ -4,10 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
         Game game = new Game();
-        game.getRounds();
-
-        Game players = new Game();
-        game.getPlayers();
+        System.out.println("Please choice how many rounds you going to play." +
+                "\nEnter number between 5-30 ");
+        game.runMenu();
 
     }
 }
