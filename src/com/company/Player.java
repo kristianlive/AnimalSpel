@@ -45,6 +45,10 @@ public class Player extends Game {
         this.playerAnimal.add(newAnimal);
     }
 
+    public void buyItem(int itemPrice) {
+        this.money -= itemPrice;
+    }
+
 
     public void getPlayers() {
         System.out.println("Players list" + players);
