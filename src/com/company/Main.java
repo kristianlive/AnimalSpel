@@ -7,7 +7,7 @@ public class Main {
         Player player = new Player("Hero",200);
         game.runMenu();
         game.runGame();
-        game.runPlayers();
+        game.addPlayers();
 
     }
 }

@@ -1,6 +1,9 @@
 package com.company;
 import java.util.*;
-public class Game {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Comparator;
+public class Game implements Serializable {
 
     Scanner inputRound = new Scanner(System.in);
     Scanner scanner = new Scanner(System.in);
@@ -18,7 +21,7 @@ public class Game {
         System.out.println(this.numOfRounds + " rounds left.");
         System.out.println("------------------------------------------------");
     }
-    public void runPlayers() {
+    public void addPlayers() {
         System.out.println("Please choice how many players. " +
                 "\nEnter number between 1-4 ");
         Scanner scanner = new Scanner(System.in);
