@@ -1,10 +1,14 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-
-public class Player extends Game {
+import java.io.PrintStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+public class Player implements Serializable {
     public Game game;
-    private String name;
+    private final String name;
     private int money;
     private ArrayList<Animal> playerAnimal;
     private ArrayList<Food> playerFood;
@@ -50,12 +54,8 @@ public class Player extends Game {
     }
 
 
-    public void getPlayers() {
-        System.out.println("Players list" + players);
-    }
-
-
-
+    //public void getPlayers() {
+      //  System.out.println("Players list" + players);
 
     }
 

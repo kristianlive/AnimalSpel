@@ -2,51 +2,55 @@ package com.company;
 import java.util.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Comparator;
+
 public class Game implements Serializable {
 
-    Scanner inputRound = new Scanner(System.in);
-    Scanner scanner = new Scanner(System.in);
-    public int player;
-    //static public ArrayList<Player> players;
-    Boolean close = false;
     public int numOfRounds;
-    ArrayList<Integer> players = new ArrayList<>();
+    public ArrayList<Integer> players = new ArrayList<>();
+    public Player currentPlayer;
 
 
-    public void runMenu() {
-        System.out.println("Please choice how many rounds you going to play." +
-                "\nEnter number between 5-30 ");
-        numOfRounds = inputRound.nextInt();
-        System.out.println(this.numOfRounds + " rounds left.");
-        System.out.println("------------------------------------------------");
-    }
     public void addPlayers() {
-        System.out.println("Please choice how many players. " +
-                "\nEnter number between 1-4 ");
+
         Scanner scanner = new Scanner(System.in);
-        int amountPlayer;
-        while ((amountPlayer = scanner.nextInt()) > 0) {
+        System.out.println("Please enter the number of players:" +
+                "\nEnter number between 1-4 ");
+        int amountPlayer = scanner.nextInt();
+
+        String[] player_name = new String[amountPlayer + 1];
+        for (int i = 0; i < amountPlayer; i++) {
+            System.out.print("Player " + (i + 1) + " please enter your name:\n");
+            player_name[i] = scanner.nextLine();
+
+            System.out.println(player_name[0]);
+
+            /*System.out.print("Player " + (i+2) + " please enter your name:\n");
+            player_name[i+1] = scanner.nextLine();
+
+
+
+        }
+
+        /*while ((amountPlayer = scanner.nextInt()) > 0) {
             players.add(amountPlayer);
             System.out.println("Total players in list: " + players);
+            break;*/
         }
+    }
+    public void runMenu() {
+        int rounds = Dialogs.promptInt("Please choice how many rounds you going to play." +
+                "\nEnter number between 5-30 ", 5, 30);
+        System.out.println(rounds + " rounds left.");
+        System.out.println("------------------------------------------------");
 
-
-        }
-
-
-       // System.out.println("Your choice: " + this.player + " players, get Ready !");
-
-
-    public void runGame() {
         int i = 1;
-        while (this.numOfRounds != 0) {
-            if (numOfRounds > 0 && numOfRounds < 30) {
-                System.out.println("Run game" + i++);
-                this.numOfRounds--;
+        while (rounds != 0) {
+            if (rounds > 0 && rounds < 30) {
+                System.out.println("Run game " + i++);
+                rounds--;
             } else {
-                System.out.println("\nError...Please choice number of rounds between 5-30");
-                numOfRounds = inputRound.nextInt();
+               Dialogs.promptInt("Error...Please choice how many rounds you going to play." +
+                        "\nEnter number between 5-30 ", 5, 30);
             }
 
         }
