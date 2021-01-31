@@ -6,9 +6,27 @@ import java.util.ArrayList;
 public class Game implements Serializable {
 
     public int numOfRounds;
-    public ArrayList<Integer> players = new ArrayList<>();
     public Player currentPlayer;
+    private ArrayList<Player> playerList = new ArrayList<Player>();
 
+    public Game() {
+        Player player1 = new Player("Joe", 200);
+        Player player2 = new Player("Filip", 200);
+        Player player3 = new Player("Max", 200);
+        Player player4 = new Player("Dude", 200);
+        playerList.add(player1);
+        playerList.add(player2);
+        playerList.add(player3);
+        playerList.add(player4);
+    }
+    public Player getPlayer(String playerName) {
+        Player player = null;
+
+        for (Player everyPlayer : playerList) {
+            if (everyPlayer.getName().equals(playerName)) {
+                player = everyPlayer;
+            } }
+        return player; }
 
     public void addPlayers() {
 
@@ -23,20 +41,9 @@ public class Game implements Serializable {
             player_name[i] = scanner.nextLine();
 
             System.out.println(player_name[0]);
-
-            /*System.out.print("Player " + (i+2) + " please enter your name:\n");
-            player_name[i+1] = scanner.nextLine();
-
-
-
+        }
         }
 
-        /*while ((amountPlayer = scanner.nextInt()) > 0) {
-            players.add(amountPlayer);
-            System.out.println("Total players in list: " + players);
-            break;*/
-        }
-    }
     public void runMenu() {
         int rounds = Dialogs.promptInt("Please choice how many rounds you going to play." +
                 "\nEnter number between 5-30 ", 5, 30);
@@ -55,6 +62,7 @@ public class Game implements Serializable {
 
         }
     }
+
 }
 
 

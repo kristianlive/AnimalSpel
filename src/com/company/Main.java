@@ -1,11 +1,12 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
          Game game = new Game();
-        Player player = new Player("Hero",200);
-        game.addPlayers();
+        System.out.println(game.getPlayer("Joe"));
         game.runMenu();
 
     }
