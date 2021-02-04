@@ -1,15 +1,15 @@
 package com.company;
 
-import java.io.Serializable;
-import java.util.*;
-import java.io.PrintStream;
+import com.company.AnimalType.Animal;
+import com.company.FoodClasses.Food;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Player implements Serializable {
     public Game game;
     private String name; // set game and get name exist
-    private int money;
+    private int money = 200;
     private ArrayList<Animal> playerAnimal;
     private ArrayList<Food> playerFood;
     public boolean canBuyAnimal = true;
@@ -30,13 +30,12 @@ public class Player implements Serializable {
         return name;
     }
 
-    public Player(String name, int money) {
+    public Player(String name) {
         this.name = name;
-        this.money = money;
+       // this.money = money;
         this.playerAnimal = new ArrayList();
         this.playerFood = new ArrayList();
     }
-
 
    /* public void setPlayers () {
         Scanner scanner = new Scanner(System.in);
@@ -45,7 +44,7 @@ public class Player implements Serializable {
         int amountPlayer = scanner.nextInt();
 
         if (amountPlayer == 1){
-            player_name.add(1,"sdsd");
+            player_name.add("Joe");
             System.out.println("Your choice is: " + amountPlayer + " player" +
                     "\nPlayer name: " + player_name);
     }
@@ -77,7 +76,7 @@ public class Player implements Serializable {
     }
 */
 
-    public ArrayList<Animal> getPlayerPokemon() {
+    public ArrayList<Animal> getPlayerAnimal() {
         return this.playerAnimal;
     }
 

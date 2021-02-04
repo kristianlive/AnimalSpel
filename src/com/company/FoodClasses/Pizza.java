@@ -1,4 +1,4 @@
-package com.company;
+package com.company.FoodClasses;
 
 public class Pizza extends Food {
     public Pizza() {

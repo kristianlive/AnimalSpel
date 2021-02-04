@@ -13,7 +13,7 @@ public class Dialogs {
     static public String prompt(String question){
         // clear() ? maybe we want a clear before each prompt
         System.out.println(question);
-        return scanner.nextLine();
+        return scanner.nextLine();// loop 4 gång
     }
 
     static public int promptInt(String question, int min, int max){

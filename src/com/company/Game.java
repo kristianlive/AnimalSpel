@@ -2,68 +2,61 @@ package com.company;
 import java.util.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-
+import java.util.Collections;
 public class Game implements Serializable {
 
     public int numOfRounds;
-    public Player currentPlayer;
+    protected Player currentPlayer;
+    protected int amountPlayer;
+
+    Scanner scanAmountPlayer = new Scanner(System.in);
+    Scanner scanPlayerName = new Scanner(System.in);
+
     private ArrayList<Player> playerList = new ArrayList<Player>();
 
+    public ArrayList<Player> getStringList() {
+        return playerList;
+    }
+
+    public void getPlayerList() {
+        for (int i = 0; i < playerList.size(); i++) {
+            System.out.println(playerList.get(i).getName() + " ");
+        }
+    }
     public Game() {
-        Player player1 = new Player("Joe", 200);
-        Player player2 = new Player("Filip", 200);
-        Player player3 = new Player("Max", 200);
-        Player player4 = new Player("Dude", 200);
-        playerList.add(player1);
-        playerList.add(player2);
-        playerList.add(player3);
-        playerList.add(player4);
-    }
-    public Player getPlayer(String playerName) {
-        Player player = null;
+        { this.amountPlayer = Dialogs.promptInt("Please enter the number of players:" +
+                    "\nEnter number between 1-4 ", 1,4);
+        } while (amountPlayer !=0) {
+            if (amountPlayer >= 1 && amountPlayer <= 4) {
+                System.out.println("Please enter the name of player number " + amountPlayer);
+                String inputName = scanPlayerName.nextLine();
+                Player player = new Player(inputName);
+                playerList.add(player);
+                amountPlayer --;
+            } else { System.out.println("Error...Please choice how many players you are, between '1-4'");
+            } }System.out.println("Here is amount of players: " + "[" + playerList.size() + "]");
+        getPlayerList(); }
 
-        for (Player everyPlayer : playerList) {
-            if (everyPlayer.getName().equals(playerName)) {
-                player = everyPlayer;
-            } }
-        return player; }
+            public void runMenu () {
+            int rounds = Dialogs.promptInt("Please choice how many rounds you going to play." +
+                    "\nEnter number between 5-30 ", 5, 30);
+            System.out.println(rounds + " rounds left.");
+            System.out.println("------------------------------------------------");
+            int i = 1;
+            while (rounds != 0) {
+                if (rounds > 0 && rounds < 30) {
+                    System.out.println("Run game " + i++);
+                    rounds--;
+                } else {
+                    Dialogs.promptInt("Error...Please choice how many rounds you going to play." +
+                            "\nEnter number between 5-30 ", 5, 30);
+                }
 
-    public void addPlayers() {
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter the number of players:" +
-                "\nEnter number between 1-4 ");
-        int amountPlayer = scanner.nextInt();
-
-        String[] player_name = new String[amountPlayer + 1];
-        for (int i = 0; i < amountPlayer; i++) {
-            System.out.print("Player " + (i + 1) + " please enter your name:\n");
-            player_name[i] = scanner.nextLine();
-
-            System.out.println(player_name[0]);
-        }
-        }
-
-    public void runMenu() {
-        int rounds = Dialogs.promptInt("Please choice how many rounds you going to play." +
-                "\nEnter number between 5-30 ", 5, 30);
-        System.out.println(rounds + " rounds left.");
-        System.out.println("------------------------------------------------");
-
-        int i = 1;
-        while (rounds != 0) {
-            if (rounds > 0 && rounds < 30) {
-                System.out.println("Run game " + i++);
-                rounds--;
-            } else {
-               Dialogs.promptInt("Error...Please choice how many rounds you going to play." +
-                        "\nEnter number between 5-30 ", 5, 30);
             }
-
         }
-    }
+        }
 
-}
+
 
 
 
