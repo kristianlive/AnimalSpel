@@ -8,14 +8,18 @@ import java.util.Set;
 
 
     public abstract class Animal implements Serializable {
-        protected String name;
-        protected int health = 100;
-        public boolean isSick = false;
-        protected int maxOffspring;
-        protected Set<Food> canEat;
-        protected Food[] canEatFood;
-        protected int age = 0;
-        protected int maxAge;
-        protected int price;
+        private String name;
+        private int health = 100;
+        private String male;
+        private String female;
+
+        public String getName() {
+            return name;
+        }
+
+        Bird bird = new Bird();
+        Cat cat = new Cat();
+        Dog dog = new Dog();
+        Fish fish = new Fish();
 
     }

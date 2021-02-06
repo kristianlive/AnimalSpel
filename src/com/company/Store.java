@@ -6,18 +6,14 @@ import com.company.FoodClasses.Food;
 import java.util.ArrayList;
 
 public class Store {
-    private Game game;
-    private ArrayList<Animal> playerAnimal = new ArrayList();
-    private ArrayList<Food> playerFood = new ArrayList();
+    private ArrayList<Animal> animalList = new ArrayList();
+    private ArrayList<Food> foodList = new ArrayList();
 
-    public Store() {
-        this.addPlayerAnimal();
-       // this.addplayerFood();
-    }
-
-    private void addPlayerAnimal() {
-        if (this.playerAnimal != null) {
-            this.playerAnimal.clear();
-        }
+    public void getAnimalList() {
+        for (int i = 0; i < animalList.size(); i++) {
+            System.out.println(animalList.get(i).getName() + " ");
+        } // to give a choice to user use dialogs menu
     }
 }
+
+

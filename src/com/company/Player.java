@@ -19,16 +19,16 @@ public class Player implements Serializable {
     public boolean canFeedAnimal = true;
     public boolean roundDone = false;
 
-    //List<Player> player_name = new ArrayList<>();
     public ArrayList<Player> player_name;
 
     private void setName(String name) {
         this.name = name;
     }
+    public String getName() {return name;}
 
-    public String getName() {
-        return name;
-    }
+    public void setMoney(int money) {this.money = money;}
+
+    public int getMoney() {return this.money;}
 
     public Player(String name) {
         this.name = name;
@@ -37,51 +37,8 @@ public class Player implements Serializable {
         this.playerFood = new ArrayList();
     }
 
-   /* public void setPlayers () {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter the number of players:" +
-                "\nEnter number between 1-4 ");
-        int amountPlayer = scanner.nextInt();
-
-        if (amountPlayer == 1){
-            player_name.add("Joe");
-            System.out.println("Your choice is: " + amountPlayer + " player" +
-                    "\nPlayer name: " + player_name);
-    }
-    else if (amountPlayer == 2){
-            player_name.add("Killer");
-            player_name.add("Richy");
-            System.out.println("Your choice is: " + amountPlayer + " players" +
-                    "\nPlayer names: " + player_name);
-
-        }
-        else if (amountPlayer == 3) {
-            player_name.add("Killer");
-            player_name.add("Richy");
-            player_name.add("Rocky");
-            System.out.println("Your choice is: " + amountPlayer + " players" +
-                    "\nPlayer names: " + player_name);
-        }
-            else if (amountPlayer == 4) {
-            player_name.add("Killer");
-            player_name.add("Richy");
-            player_name.add("Rocky");
-            player_name.add("Joe");
-            System.out.println("Your choice is: " + amountPlayer + " players" +
-            "\nPlayer names: " + player_name);
-        }
-            else {
-            System.out.println("Error...Please enter number between 1-4");
-        }
-    }
-*/
-
     public ArrayList<Animal> getPlayerAnimal() {
         return this.playerAnimal;
-    }
-
-    public int getMoney() {
-        return this.money;
     }
 
     public Food getFood(int index) {

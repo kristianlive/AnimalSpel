@@ -14,9 +14,6 @@ public class Game implements Serializable {
 
     private ArrayList<Player> playerList = new ArrayList<Player>();
 
-    public ArrayList<Player> getStringList() {
-        return playerList;
-    }
 
     public void getPlayerList() {
         for (int i = 0; i < playerList.size(); i++) {
@@ -46,6 +43,10 @@ public class Game implements Serializable {
             while (rounds != 0) {
                 if (rounds > 0 && rounds < 30) {
                     System.out.println("Run game " + i++);
+
+                Dialogs.menu("Player's personal menu", "Buy Animal",
+                            "Buy Food","Feed Animal","Try to mate animals");
+
                     rounds--;
                 } else {
                     Dialogs.promptInt("Error...Please choice how many rounds you going to play." +
