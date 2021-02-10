@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 public class Game implements Serializable {
 
-    Store store = new Store(this);
+    Store store = new Store();
 
-    public int numOfRounds;
+    private int numOfRounds;
+    private int round = 1;
     protected Player currentPlayer;
     protected int amountPlayer;
     protected int menuChoice;
@@ -22,8 +23,9 @@ public class Game implements Serializable {
     public void getPlayerList() {
         for (int i = 0; i < playerList.size(); i++) {
             System.out.println(playerList.get(i).getName() + " ");
-        }
-    }
+        } }
+        public int getRound(){
+            return this.round; }
 
     public Game() {
         {
@@ -46,35 +48,36 @@ public class Game implements Serializable {
     }
 
     public void runMenu() {
-        int rounds = Dialogs.promptInt("Please choice how many rounds you going to play." +
+        round = Dialogs.promptInt("Please choice how many rounds you going to play." +
                 "\nEnter number between 5-30 ", 5, 30);
-        System.out.println(rounds + " rounds left.");
+        System.out.println(round + " rounds left.");
         System.out.println("------------------------------------------------");
         int i = 1;
-        while (rounds != 0) {
-            if (rounds > 0 && rounds < 30) {
+        while (round != 0) {
+            if (round > 0 && round < 30) {
                 System.out.println("Run game " + i++);
 
                 menuChoice = Dialogs.menu("Player's personal menu", "Buy Animal",
-                        "Sell Animal", "Buy Food", "Feed Animal","Try to mate Animal","Exit");
-                switch ( menuChoice ) {
+                        "Sell Animal", "Buy Food", "Feed Animal", "Try to mate Animal","Pass round", "Exit");
+                switch (menuChoice) {
                     //Create menu by methods
-                    case 1 -> store.buyAnimal();
+                     case 1 -> store.buyAnimal();
                     //case 2 -> store.sellAnimal;
                     //case 3-> store.buyFood;
                     //case 4-> store.feedAnimal;
                     //case 5 -> store.mateAnimals;
-                    case 6 -> System.exit(0);
+                    case 6 -> round --;
+                    case 7 ->System.exit(0);
                 }
-                rounds--;
             } else {
                 Dialogs.promptInt("Error...Please choice how many rounds you going to play." +
                         "\nEnter number between 5-30 ", 5, 30);
             }
+
         }
 
+        }
     }
-}
 
 
 

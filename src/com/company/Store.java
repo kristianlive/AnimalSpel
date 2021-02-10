@@ -1,34 +1,40 @@
 package com.company;
 
-import com.company.AnimalType.Animal;
+import com.company.AnimalType.*;
 import com.company.FoodClasses.Food;
 
+import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Store implements Serializable {
     int inputBuyAnimalChoice, buyFoodChoice;
 
-    private final Game myGame;
+    private Game myGame;
+    private ArrayList<Animal> playerAnimal = new ArrayList<>();
+    private ArrayList<Food> playerFood = new ArrayList<>();
 
-    public Store(Game myGame) {
-        this.myGame = myGame;
-
+    public Store() {
+        this.buyAnimal();
+        //this.buyFood();
     }
 
-    public void buyAnimal(Player  player) {
-
-        do {
-            inputBuyAnimalChoice = Dialogs.menu("Buy a Bird", "Buy a Cat", "Buy a Dog", "Buy Fish");
-            switch (inputBuyAnimalChoice) {
-                case 1 ->
-
-
-            }
-        }while ();
+    public void displayFood(Player customer) {
 
     }
-    public void buyAnimal (Player player, int price, int inputChoice){
+    private void addAnimalToStore(){
+        if (this.playerAnimal !=null){
+            this.playerAnimal.clear();
+        }
+        assert this.playerAnimal !=null;
+
+        this.playerAnimal.add(new Bird());
+        this.playerAnimal.add(new Cat());
+        this.playerAnimal.add(new Dog());
+        this.playerAnimal.add(new Fish());
+
+    }
+    public void buyAnimal (){
 
     }
 

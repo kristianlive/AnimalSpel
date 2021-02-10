@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.AnimalType.Animal;
+import com.company.AnimalType.*;
 import com.company.FoodClasses.Food;
 
 import java.io.Serializable;

@@ -13,4 +13,9 @@ public class MenuSystem implements Serializable {
     public void sellAnimalMenu(Player player) {
 
     }
+    protected void playerDisplay(Player player) {
+        System.out.println(player.getName());
+        System.out.println("Money: " + player.getMoney());
+
+    }
 }
