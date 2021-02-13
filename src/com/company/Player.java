@@ -32,7 +32,7 @@ public class Player implements Serializable {
 
     public Player(String name) {
         this.name = name;
-       // this.money = money;
+        this.money = money;
         this.playerAnimal = new ArrayList();
         this.playerFood = new ArrayList();
     }

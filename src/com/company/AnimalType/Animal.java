@@ -6,15 +6,11 @@ import java.io.Serializable;
 import java.util.Set;
 
     public abstract class Animal implements Serializable {
-        static enum Gender {
-            FEMALE,
-            MALE;
-            private Gender() { }}
-        public Animal() { }
 
+        public Animal() { }
         protected String name;
+        protected String gender;
         protected int health = 100;
-        protected Animal.Gender gender;
         public boolean sick = false;
         protected int age = 0;
         protected int maxAge;
@@ -30,12 +26,8 @@ import java.util.Set;
             return this.health;
         }
 
-        public Animal.Gender getGender() {
+        public String getGender() {
             return this.gender;
-        }
-
-        public String getGenderString() {
-            return this.gender.toString().toLowerCase();
         }
 
         public int getAge() {
@@ -63,17 +55,7 @@ import java.util.Set;
             this.health = Math.min(this.health, 100);
         }
 
-        public void setGender(int n) {
-            if (n == 1) {
-                this.gender = Animal.Gender.FEMALE;
-            } else {
-                this.gender = Animal.Gender.MALE;
-            }
 
-            Bird bird = new Bird();
-            Cat cat = new Cat();
-            Dog dog = new Dog();
-            Fish fish = new Fish();
 
         }
-    }
+

@@ -5,13 +5,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 public class Game implements Serializable {
 
-    Store store = new Store();
-
     private int numOfRounds;
     private int round = 1;
     protected Player currentPlayer;
     protected int amountPlayer;
     protected int menuChoice;
+    Store store = new Store();
 
     Scanner scanAmountPlayer = new Scanner(System.in);
     Scanner scanPlayerName = new Scanner(System.in);

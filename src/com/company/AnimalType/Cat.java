@@ -7,11 +7,13 @@ import com.company.FoodClasses.Food;
 import com.company.FoodClasses.Pizza;
 
 public class Cat extends Animal {
-            public Cat() {
+            public Cat(String name, String gender) {
                 this.price = 50;
                 this.maxAge = 15;
                 this.maxOffspring = 4;
                 this.eatFood = new Food[]{new Apple(), new Cake(), new Pizza()};
+                this.gender = gender;
+                this.name = name;
             }
         }
 
