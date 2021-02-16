@@ -1,8 +1,10 @@
 package com.company;
+import com.company.AnimalType.Animal;
+
 import java.util.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
+
 public class Game implements Serializable {
 
     private int numOfRounds;
@@ -18,23 +20,31 @@ public class Game implements Serializable {
 
     private ArrayList<Player> playerList = new ArrayList<Player>();
 
-
     public void getPlayerList() {
         for (int i = 0; i < playerList.size(); i++) {
             System.out.println(playerList.get(i).getName() + " ");
-        } }
-        public int getRound(){
-            return this.round; }
+        }
+    }
+
+
+    public int getRound() {
+        return this.round;
+    }
+
 
     public Game() {
         {
             this.amountPlayer = Dialogs.promptInt("Please enter the number of players:" +
                     "\nEnter number between 1-4 ", 1, 4);
+            round = Dialogs.promptInt("Please choice how many rounds you going to play." +
+                    "\nEnter number between 5-30 ", 5, 30);
+            System.out.println(round + " rounds left.");
+            System.out.println("------------------------------------------------");
         }
         while (amountPlayer != 0) {
             if (amountPlayer >= 1 && amountPlayer <= 4) {
-                System.out.println("Please enter the name of player number " + amountPlayer);
-                String inputName = scanPlayerName.nextLine();
+                String inputName = Dialogs.prompt("Please enter the name of player number " + amountPlayer);
+
                 Player player = new Player(inputName);
                 playerList.add(player);
                 amountPlayer--;
@@ -44,13 +54,14 @@ public class Game implements Serializable {
         }
         System.out.println("Here is amount of players: " + "[" + playerList.size() + "]");
         getPlayerList();
-    }
 
+        for (var i = 1; i <= round; i++) {
+            for (var player : playerList) {
+                runMenu();
+            }
+        }
+    }
     public void runMenu() {
-        round = Dialogs.promptInt("Please choice how many rounds you going to play." +
-                "\nEnter number between 5-30 ", 5, 30);
-        System.out.println(round + " rounds left.");
-        System.out.println("------------------------------------------------");
         int i = 1;
         while (round != 0) {
             if (round > 0 && round < 30) {
@@ -75,11 +86,15 @@ public class Game implements Serializable {
 
         }
 
+        }public void checkIfPlayerHasEnoughCash(Player player, Animal newAnimal) {
+        if (player.getMoney() >= newAnimal.getPrice()) {
+            player.getPlayerAnimal().add(newAnimal);
+            System.out.println("Yey! You bought a new animal!");
+        } else {
+            System.out.println("Oh no! You do not have enough money to buy this animal.");
         }
-    }
 
-
-
+}}
 
 
 

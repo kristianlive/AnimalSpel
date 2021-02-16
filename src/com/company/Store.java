@@ -12,8 +12,6 @@ public class Store implements Serializable {
     int inputBuyAnimalChoice, buyFoodChoice;
 
     private Game myGame;
-    private ArrayList<Animal> playerAnimal = new ArrayList<>();
-    private ArrayList<Food> playerFood = new ArrayList<>();
 
     public Store() {
     }

@@ -10,8 +10,8 @@ public class Player implements Serializable {
     public Game game;
     private String name; // set game and get name exist
     private int money = 200;
-    private ArrayList<Animal> playerAnimal;
-    private ArrayList<Food> playerFood;
+    public ArrayList<Animal> playerAnimal;
+    public ArrayList<Food> playerFood;
     public boolean canBuyAnimal = true;
     public boolean canSellAnimal = true;
     public boolean canBuyFood = true;
@@ -19,7 +19,7 @@ public class Player implements Serializable {
     public boolean canFeedAnimal = true;
     public boolean roundDone = false;
 
-    public ArrayList<Player> player_name;
+    public ArrayList<Player> player;
 
     private void setName(String name) {
         this.name = name;
@@ -29,6 +29,10 @@ public class Player implements Serializable {
     public void setMoney(int money) {this.money = money;}
 
     public int getMoney() {return this.money;}
+
+    public Player(ArrayList<Animal> playerAnimal) {
+        this.playerAnimal = new ArrayList<>();
+    }
 
     public Player(String name) {
         this.name = name;
