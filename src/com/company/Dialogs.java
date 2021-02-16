@@ -31,7 +31,7 @@ public class Dialogs {
     static public int menu(String menuName, String ...options){
         // print the menu
         clear();
-        System.out.println("-".repeat(50));
+        //System.out.println("-".repeat(50));
         System.out.println("MY GAME NAME: " + menuName);
         System.out.println("-".repeat(50));
         var counter = 1;
