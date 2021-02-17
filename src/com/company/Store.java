@@ -14,6 +14,7 @@ public class Store implements Serializable {
     int inputBuyAnimalChoice, buyFoodChoice;
     String inputName;
     private Game game;
+    int moneyChange;
 
     public Store() {
     }
@@ -25,29 +26,33 @@ public class Store implements Serializable {
     public void buyAnimal(Player player) {
 
         int animalType = Dialogs.promptInt("Please choice animal 1 bird, 2 cat, " +
-                " 3dog , 4 fish",1, 4);
+                " 3dog , 4 fish", 1, 4);
         var gender = chooseGender();
 
         var name = Dialogs.prompt("Please write name of your animal");
 
-        Animal newAnimal = switch ( animalType) {
+        Animal newAnimal = switch (animalType) {
             case 1 -> new Bird(name, gender);
             case 2 -> new Cat(name, gender);
             case 3 -> new Dog(name, gender);
-            case 4 -> new Fish(name,gender);
+            case 4 -> new Fish(name, gender);
             default -> throw new IllegalStateException("Unexpected value: " + animalType);
         };
-       checkIfPlayerHasEnoughCash(player, newAnimal);
+        checkIfPlayerHasEnoughCash(player, newAnimal);
     }
 
     public void checkIfPlayerHasEnoughCash(Player player, Animal newAnimal) {
         if (player.getMoney() >= newAnimal.getPrice()) {
+            player.buyItem(newAnimal.getPrice());
             player.getPlayerAnimal().add(newAnimal);
-            System.out.println("Yey! You bought a new animal!");
+            System.out.println("Yey! You bought a new animal!"
+            + "Money Left: " + player.getMoney() );
         } else {
             System.out.println("Oh no! You do not have enough money to buy this animal.");
         }
     }
+
+
         public String chooseGender(){
             String chosenGender = "";
             var gender = Dialogs.prompt("1 male , 2 female");
