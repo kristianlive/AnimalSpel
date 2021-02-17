@@ -1,6 +1,8 @@
 package com.company;
 
 import com.company.AnimalType.*;
+import com.company.Player.*;
+import com.company.Game.*;
 import com.company.FoodClasses.Food;
 import com.company.AnimalType.Animal;
 import java.util.Scanner;
@@ -10,8 +12,8 @@ import java.util.ArrayList;
 
 public class Store implements Serializable {
     int inputBuyAnimalChoice, buyFoodChoice;
-
-    private Game myGame;
+    String inputName;
+    private Game game;
 
     public Store() {
     }
@@ -19,7 +21,8 @@ public class Store implements Serializable {
     public void displayFood(Player customer) {
     }
 
-    public void buyAnimal() {
+
+    public void buyAnimal(Player player) {
 
         int animalType = Dialogs.promptInt("Please choice animal 1 bird, 2 cat, " +
                 " 3dog , 4 fish",1, 4);
@@ -27,14 +30,14 @@ public class Store implements Serializable {
 
         var name = Dialogs.prompt("Please write name of your animal");
 
-        Animal newAnimal = switch (animalType) {
+        Animal newAnimal = switch ( animalType) {
             case 1 -> new Bird(name, gender);
             case 2 -> new Cat(name, gender);
             case 3 -> new Dog(name, gender);
             case 4 -> new Fish(name,gender);
             default -> throw new IllegalStateException("Unexpected value: " + animalType);
         };
-       // checkIfPlayerHasEnoughCash(player, newAnimal);
+       checkIfPlayerHasEnoughCash(player, newAnimal);
     }
 
     public void checkIfPlayerHasEnoughCash(Player player, Animal newAnimal) {

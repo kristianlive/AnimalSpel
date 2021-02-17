@@ -30,9 +30,9 @@ public class Dialogs {
 
     static public int menu(String menuName, String ...options){
         // print the menu
-        clear();
+        //clear();
         //System.out.println("-".repeat(50));
-        System.out.println("MY GAME NAME: " + menuName);
+        System.out.println("Player Menu: " + menuName);
         System.out.println("-".repeat(50));
         var counter = 1;
         for(var option : options){

@@ -1,25 +1,30 @@
 package com.company;
 
 import com.company.AnimalType.*;
+import com.company.FoodClasses.Apple;
+import com.company.FoodClasses.Cake;
 import com.company.FoodClasses.Food;
-
+import com.company.FoodClasses.Pizza;
+import com.company.Player.*;
 import java.io.Serializable;
 import java.util.ArrayList;
-
+import com.company.FoodClasses.Food.*;
 public class Player implements Serializable {
     public Game game;
+
     private String name; // set game and get name exist
     private int money = 200;
-    public ArrayList<Animal> playerAnimal;
-    public ArrayList<Food> playerFood;
+    public final ArrayList<Animal> playerAnimal = new ArrayList<>();
+    public final Food[] playerFood = {
+            new Apple(),
+            new Cake(),
+            new Pizza()};
     public boolean canBuyAnimal = true;
     public boolean canSellAnimal = true;
     public boolean canBuyFood = true;
     public boolean canAnimal = true;
     public boolean canFeedAnimal = true;
     public boolean roundDone = false;
-
-    public ArrayList<Player> player;
 
     private void setName(String name) {
         this.name = name;
@@ -30,27 +35,15 @@ public class Player implements Serializable {
 
     public int getMoney() {return this.money;}
 
-    public Player(ArrayList<Animal> playerAnimal) {
-        this.playerAnimal = new ArrayList<>();
-    }
 
-    public Player(String name) {
-        this.name = name;
-        this.money = money;
-        this.playerAnimal = new ArrayList();
-        this.playerFood = new ArrayList();
-    }
+    public Player(String name) {this.name = name;}
 
     public ArrayList<Animal> getPlayerAnimal() {
-        return this.playerAnimal;
+        return playerAnimal;
     }
 
-    public Food getFood(int index) {
-        return (Food)this.playerFood.get(index);
-    }
-
-    public ArrayList<Food> getPlayerFood() {
-        return this.playerFood;
+    public Food[] getPlayerFood() {
+        return playerFood;
     }
 
     public Animal getAnimal(int index) {
