@@ -11,7 +11,6 @@ public class Fish extends Animal {
         this.price = 25;
         this.maxAge = 5;
         this.maxOffspring = 5;
-        this.eatFood = new Food[]{new Apple(), new Cake(), new Pizza()};
         this.gender =  gender;
         this.name = name;
     }

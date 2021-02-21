@@ -4,6 +4,8 @@ import com.company.AnimalType.Animal;
 import java.util.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import com.company.FoodClasses.Feed;
 import com.company.Player.*;
 import com.company.Game.*;
 
@@ -17,6 +19,7 @@ public class Game implements Serializable {
     protected int menuChoice;
     String inputName;
     Store store = new Store();
+    Feed feed = new Feed();
      ArrayList<Player> playerList = new ArrayList<Player>();
 
     public void getPlayerList() {
@@ -73,8 +76,8 @@ public class Game implements Serializable {
                      case 1 -> store.buyAnimal(player);
                     case 2 -> store.sellAnimal(player);
                     case 3-> store.buyFood(player);
-                    //case 4-> store.feedAnimal;
-                    //case 5 -> store.mateAnimals;
+                    case 4-> feed.feedAnimal(player);
+                    case 5 -> store.mateAnimals;
                     case 6 -> { break; }
                     case 7 ->System.exit(0);
                 }

@@ -11,7 +11,6 @@ public class Dog extends Animal {
         this.price = 90;
         this.maxAge = 13;
         this.maxOffspring = 7;
-        this.eatFood = new Food[]{new Apple(), new Cake(), new Pizza()};
         this.gender =  gender;
         this.name = name;
     }

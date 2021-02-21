@@ -45,6 +45,7 @@ public class Player implements Serializable {
         this.name = name;
     }
 
+
     public ArrayList<Animal> getPlayerAnimal() {
         return playerAnimal;
     }
@@ -52,8 +53,13 @@ public class Player implements Serializable {
     public void displayAnimal() {
         for (int i = 0; i < playerAnimal.size(); i++) {
             System.out.println("["+(1+i)+"]"+playerAnimal.get(i).getName() + " ");
-        }
-    }
+        }}
+
+        public void displayFood() {
+            for (int i = 0; i < playerFood.size(); i++) {
+                System.out.println("["+(1+i)+"]"+playerFood.get(i) + " ");
+
+    }}
 
     public ArrayList<Food> getPlayerFood() {
         return playerFood;
@@ -74,5 +80,22 @@ public class Player implements Serializable {
         this.money += itemPrice;
     }
 
+    public Food getFood(int index) {
+        return (Food)this.playerFood.get(index);
     }
+
+    public void accessShops(boolean setAllTrue) {
+        if (setAllTrue) {
+            this.canBuyAnimal = true;
+            this.canSellAnimal = true;
+            this.canBuyFood = true;
+            this.canFeedAnimal = true;
+        } else {
+            this.canBuyAnimal = false;
+            this.canSellAnimal = false;
+            this.canBuyFood = false;
+            this.canFeedAnimal = false;
+        }
+    }
+}
 

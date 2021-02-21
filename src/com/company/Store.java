@@ -54,6 +54,7 @@ public class Store implements Serializable {
             case 3 -> new Pizza();
             default -> throw new IllegalStateException("Unexpected value: " + foodClasses);
         };
+        newFood.addFood(1);
         checkCashFood(player, newFood);
     }
 
