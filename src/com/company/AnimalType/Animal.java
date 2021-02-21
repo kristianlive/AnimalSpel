@@ -7,10 +7,20 @@ import java.util.Set;
 
     public abstract class Animal implements Serializable {
 
-        public Animal() { }
+
+        public Animal() {
+            beOlder(10);
+            warnPlayer();
+        }
+        public void decreaseHealthAndAge() {
+            this.health -= (int) (Math.random() * (20)) + 10; //10-30% of the HP will disappear
+            this.age = this.age + 1;
+
+        }
+
         protected String name;
         protected String gender;
-        protected int health = 100;
+        public int health = 100;
         public boolean sick = false;
         protected int age = 0;
         protected int maxAge;
@@ -19,11 +29,18 @@ import java.util.Set;
         protected Food[] eatFood;
         protected Set<Food> canEat;
 
-
         public String getName() {
-            return name; }
+            return name;
+        }
+
         public int getHealth() {
             return this.health;
+        }
+
+        public void warnPlayer() {
+            if (this.health < 20)
+                System.out.println("!!! Your animal going to die soon !!!"
+                + this.health);
         }
 
         public String getGender() {
@@ -38,6 +55,7 @@ import java.util.Set;
             return this.maxAge;
         }
 
+
         public int getPrice() {
             return this.price;
         }
@@ -46,6 +64,13 @@ import java.util.Set;
             return this.eatFood;
         }
 
+
+        public void beOlder(int beingOlder) {
+            this.health -= beingOlder;
+        }
+        public void displayAge (){
+            System.out.println(this.health);
+        }
 
         public void eat(Food food, int quantity) {
             for (int i = 0; i < quantity; ++i) {

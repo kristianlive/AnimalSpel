@@ -56,7 +56,9 @@ public class Game implements Serializable {
         for (var i = 1; i <= round; i++) {
             for (var player : playerList) {
                 System.out.println(">>>" + this.displayRounds-- + "<<< rounds left for both players");
-                System.out.println("[" + player.getName() + "] it's your turn now!");
+                System.out.println("[" + player.getName() + "] It's your turn now!");
+                for(Animal animal: player.playerAnimal){
+                    animal.decreaseHealthAndAge();}
                 runMenu(player);
             }
         }
@@ -69,8 +71,8 @@ public class Game implements Serializable {
                 switch (menuChoice) {
                     //Create menu by methods
                      case 1 -> store.buyAnimal(player);
-                    //case 2 -> store.sellAnimal;
-                    //case 3-> store.buyFood;
+                    case 2 -> store.sellAnimal(player);
+                    case 3-> store.buyFood(player);
                     //case 4-> store.feedAnimal;
                     //case 5 -> store.mateAnimals;
                     case 6 -> { break; }
