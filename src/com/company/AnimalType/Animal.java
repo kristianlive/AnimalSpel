@@ -1,12 +1,17 @@
 package com.company.AnimalType;
 
+import com.company.Dialogs;
 import com.company.FoodClasses.Food;
+import com.company.Player;
+import com.company.Store;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Set;
 
-    public abstract class Animal implements Serializable {
+    public class Animal implements Serializable {
+        Store store = new Store();
+        String chosenGender;
 
 
         public Animal() {
@@ -53,6 +58,9 @@ import java.util.Set;
         public int getAge() {
             return this.age;
         }
+        public String getBreed() {
+            return this.getClass().getSimpleName();
+        }
 
         public int getMaxAge() {
             return this.maxAge;
@@ -78,7 +86,37 @@ import java.util.Set;
             }
 
             this.health = Math.min(this.health, 100);
-        }
 
-    }
+
+        }
+        public static boolean getRandomBoolean() {
+            return Math.random() < 0.5;
+        }
+        public void mateAnimals(Player player) {
+
+            int animalType = Dialogs.promptInt("Please choice which animals you want to mate 1 bird, 2 cat, " +
+                    " 3dog , 4 fish", 1, 4);
+            var gender = this.randomGender();
+
+            var name = Dialogs.prompt("Please write name of your animal");
+
+            Animal newAnimal = switch (animalType) {
+                case 1 -> new Bird(name, gender);
+                case 2 -> new Cat(name, gender);
+                case 3 -> new Dog(name, gender);
+                case 4 -> new Fish(name, gender);
+                default -> throw new IllegalStateException("Unexpected value: " + animalType);
+            };
+            System.out.println("Congratulations you got a: " + chosenGender);
+            }
+
+        public String randomGender() {
+             this.chosenGender = "";
+            Boolean gender = getRandomBoolean();
+            if (gender.equals(true)) {
+                this.chosenGender = "male";
+            } else if (gender.equals(false)) {
+                this.chosenGender = "female"; }
+            return this.chosenGender;
+        }}
 

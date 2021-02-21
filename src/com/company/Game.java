@@ -20,6 +20,7 @@ public class Game implements Serializable {
     String inputName;
     Store store = new Store();
     Feed feed = new Feed();
+    Animal animal = new Animal();
      ArrayList<Player> playerList = new ArrayList<Player>();
 
     public void getPlayerList() {
@@ -63,6 +64,8 @@ public class Game implements Serializable {
                 for(Animal animal: player.playerAnimal){
                     animal.decreaseHealthAndAge();}
                 runMenu(player);
+                getWinner();
+
             }
         }
     }
@@ -77,7 +80,7 @@ public class Game implements Serializable {
                     case 2 -> store.sellAnimal(player);
                     case 3-> store.buyFood(player);
                     case 4-> feed.feedAnimal(player);
-                    case 5 -> store.mateAnimals;
+                    case 5 -> animal.mateAnimals(player);
                     case 6 -> { break; }
                     case 7 ->System.exit(0);
                 }
@@ -96,6 +99,20 @@ public class Game implements Serializable {
             System.out.println("Oh no! You do not have enough money to buy this animal.");
         }
             }
+
+    public Player getWinner() {
+        int bestScore = 0;
+        int bestIndex = 0;
+
+        for(int i = 0; i < this.playerList.size(); ++i) {
+            if (((Player)this.playerList.get(i)).getMoney() > bestScore) {
+                bestScore = ((Player)this.playerList.get(i)).getMoney();
+                bestIndex = i;
+            }
+        }
+
+        return (Player)this.playerList.get(bestIndex);
+    }
 
 
 }
