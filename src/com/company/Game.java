@@ -51,7 +51,7 @@ public class Game implements Serializable {
             round = Dialogs.promptInt("Please choice how many rounds you going to play." +
                     "\nEnter number between 5-30 ", 5, 30);
             numOfRounds = round;
-            this.displayRounds = round * 2;
+            this.displayRounds = round;
             System.out.println("Yor choice is: [" + round + "] rounds for each player" );
             System.out.println("------------------------------------------------");
         } addPlayers();
@@ -59,7 +59,7 @@ public class Game implements Serializable {
         System.out.println("------------------------------------------------");
         for (var i = 1; i <= round; i++) {
             for (var player : playerList) {
-                System.out.println(">>>" + this.displayRounds-- + "<<< rounds left for both players");
+                System.out.println(">>>" + this.displayRounds-- + "<<< rounds left");
                 System.out.println("[" + player.getName() + "] It's your turn now!");
                 for(Animal animal: player.playerAnimal){
                     animal.decreaseHealthAndAge();}
@@ -84,12 +84,10 @@ public class Game implements Serializable {
                     case 6 -> { break; }
                     case 7 ->System.exit(0);
                 }
-            } else {
-                Dialogs.promptInt("Error...Please choice how many rounds you going to play." +
-                        "\nEnter number between 5-30 ", 5, 30);
             }
 
-        }
+            }
+
 
         public void checkIfPlayerHasEnoughCash(Player player, Animal newAnimal) {
         if (player.getMoney() >= newAnimal.getPrice()) {
